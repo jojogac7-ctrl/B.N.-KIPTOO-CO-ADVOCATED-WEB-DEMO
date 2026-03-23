@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>B.N. Kiptoo & Co Advocates | Nairobi, Kenya</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:    #0b1f3a;
+  --navy2:   #112d52;
+  --navy3:   #1a3f6f;
+  --gold:    #c9a84c;
+  --gold2:   #e2c06a;
+  --white:   #ffffff;
+  --offwhite:#f7f8fc;
+  --grey:    #f0f2f7;
+  --text:    #1a1a2e;
+  --muted:   #6b7280;
+  --border:  rgba(11,31,58,0.1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+
+/* ─── WATERMARK ─── */
+#wm{position:fixed;inset:0;z-index:9997;pointer-events:none;overflow:hidden;}
+.wm-t{
+  position:absolute;font-family:'Manrope',sans-serif;
+  font-size:18px;font-weight:800;letter-spacing:8px;
+  color:rgba(11,31,58,0.055);text-transform:uppercase;
+  white-space:nowrap;user-select:none;transform:rotate(-28deg);
+}
+
+/* ─── LOCK ─── */
+#lock{
+  position:fixed;inset:0;z-index:10000;
+  background:rgba(11,31,58,0.92);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;animation:lockIn 0.6s ease 2s forwards;
+}
+@keyframes lockIn{to{opacity:1}}
+
+.lock-card{
+  background:var(--white);border-radius:12px;
+  padding:52px 44px;max-width:450px;width:92%;
+  text-align:center;
+  box-shadow:0 40px 100px rgba(0,0,0,0.4);
+  animation:cardUp 0.5s cubic-bezier(.34,1.56,.64,1) 2.3s both;
+}
+@keyframes cardUp{from{transform:translateY(30px) scale(0.96);opacity:0}to{transform:none;opacity:1}}
+
+.lock-logo{
+  width:64px;height:64px;background:var(--navy);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:28px;margin-bottom:22px;
+}
+.lock-card h2{
+  font-family:'Libre Baskerville',serif;font-size:24px;
+  color:var(--navy);margin-bottom:12px;
+}
+.lock-card p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:28px;}
+.lock-card p strong{color:var(--text);}
+
+.wa-btn{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  background:#25D366;color:white;text-decoration:none;
+  padding:16px 28px;border-radius:8px;
+  font-weight:700;font-size:15px;
+  transition:all 0.2s;
+}
+.wa-btn:hover{background:#1eba58;transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,0.35);}
+.wa-btn svg{width:22px;height:22px;fill:white;flex-shrink:0;}
+
+.lock-or{display:flex;align-items:center;gap:10px;margin:18px 0;}
+.lock-or span{flex:1;height:1px;background:#e5e7eb;}
+.lock-or em{font-size:11px;color:#ccc;font-style:normal;letter-spacing:1px;}
+.lock-hint{font-size:11px;color:#bbb;margin-top:14px;}
+
+/* ─── DEMO BADGE ─── */
+.demo-badge{
+  position:fixed;top:76px;right:0;z-index:500;
+  background:var(--gold);color:var(--navy);
+  font-size:9px;font-weight:800;letter-spacing:3px;
+  padding:7px 14px;text-transform:uppercase;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:400;height:70px;
+  background:rgba(11,31,58,0.97);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;
+  border-bottom:1px solid rgba(201,168,76,0.2);
+}
+.nl{display:flex;flex-direction:column;gap:2px;}
+.nl-main{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:white;letter-spacing:0.3px;}
+.nl-sub{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:0.7;}
+.nav-links{list-style:none;display:flex;gap:32px;}
+.nav-links a{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:white;}
+.nav-cta{background:var(--gold);color:var(--navy);border:none;padding:10px 24px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'Manrope',sans-serif;transition:all 0.2s;border-radius:4px;}
+.nav-cta:hover{background:var(--gold2);}
+
+/* ─── REVEAL ANIMATION ─── */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-36px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(36px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* ─── HERO ─── */
+.hero{
+  height:100vh;min-height:700px;
+  position:relative;display:flex;
+  align-items:center;overflow:hidden;
+  padding-top:70px;
+}
+.hero-photo{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?w=1600&q=80') center/cover no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(105deg,rgba(11,31,58,0.97) 45%,rgba(11,31,58,0.7) 75%,rgba(11,31,58,0.3) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 80px;max-width:780px;
+  animation:heroUp 1s cubic-bezier(.22,1,.36,1) 0.3s both;
+}
+@keyframes heroUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.35);
+  color:var(--gold2);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;font-weight:700;
+  padding:8px 18px;border-radius:30px;margin-bottom:30px;
+}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+
+.hero h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(40px,5.5vw,72px);
+  font-weight:700;color:white;
+  line-height:1.1;margin-bottom:22px;
+}
+.hero h1 em{color:var(--gold2);font-style:italic;}
+
+.hero-sub{
+  font-size:16px;color:rgba(255,255,255,0.55);
+  line-height:1.85;max-width:500px;margin-bottom:44px;
+}
+
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-gold{
+  background:var(--gold);color:var(--navy);
+  padding:16px 36px;border:none;border-radius:6px;
+  font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;font-family:'Manrope',sans-serif;
+  text-decoration:none;display:inline-block;
+  transition:all 0.25s;box-shadow:0 4px 20px rgba(201,168,76,0.3);
+}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-3px);box-shadow:0 8px 30px rgba(201,168,76,0.4);}
+.btn-ghost{
+  background:transparent;color:rgba(255,255,255,0.7);
+  padding:16px 36px;
+  border:1.5px solid rgba(255,255,255,0.25);border-radius:6px;
+  font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;font-family:'Manrope',sans-serif;
+  text-decoration:none;display:inline-block;
+  transition:all 0.2s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold2);}
+
+/* Hero bottom bar */
+.hero-bar{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  background:rgba(201,168,76,0.12);
+  backdrop-filter:blur(10px);
+  border-top:1px solid rgba(201,168,76,0.2);
+  display:flex;
+}
+.hero-bar-item{
+  flex:1;padding:22px 32px;
+  border-right:1px solid rgba(201,168,76,0.15);
+  animation:heroUp 1s cubic-bezier(.22,1,.36,1) 0.7s both;
+}
+.hero-bar-item:last-child{border-right:none;}
+.hbi-num{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;color:var(--gold2);line-height:1;}
+.hbi-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* ─── SECTION BASE ─── */
+section{padding:100px 80px;}
+.s-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;}
+h2.s-title{font-family:'Libre Baskerville',serif;font-size:clamp(28px,3.5vw,46px);font-weight:700;line-height:1.2;margin-bottom:18px;}
+.s-body{font-size:15px;color:var(--muted);line-height:1.85;max-width:520px;}
+
+/* ─── PRACTICE AREAS ─── */
+.practice{background:var(--offwhite);}
+.practice-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;gap:32px;flex-wrap:wrap;}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+
+.card{
+  background:var(--white);border-radius:10px;
+  padding:36px 30px;
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+  transition:all 0.3s cubic-bezier(.22,1,.36,1);
+  cursor:default;
+}
+.card::before{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--navy),var(--gold));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.4s ease;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(11,31,58,0.12);border-color:transparent;}
+.card:hover::before{transform:scaleX(1);}
+
+.card-ico{
+  width:56px;height:56px;background:var(--offwhite);
+  border-radius:12px;display:flex;align-items:center;
+  justify-content:center;font-size:26px;margin-bottom:20px;
+  transition:background 0.3s;
+}
+.card:hover .card-ico{background:rgba(11,31,58,0.07);}
+.card-title{font-family:'Libre Baskerville',serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.card-body{font-size:13px;color:var(--muted);line-height:1.75;}
+
+/* ─── ABOUT PHOTO ─── */
+.about{
+  background:var(--navy);
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.about-img{
+  position:relative;overflow:hidden;min-height:600px;
+}
+.about-img img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(0.75) saturate(0.9);
+  transition:transform 8s ease;
+}
+.about-img:hover img{transform:scale(1.04);}
+.about-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,transparent 60%,var(--navy) 100%);
+}
+.about-content{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;}
+.about-content .s-title{color:white;}
+.about-content .s-body{color:rgba(255,255,255,0.5);margin-bottom:44px;}
+
+.pillars{display:flex;flex-direction:column;gap:0;}
+.pillar{
+  display:flex;gap:18px;
+  padding:22px 0;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  transition:all 0.2s;
+}
+.pillar:last-child{border-bottom:none;}
+.pillar:hover{padding-left:6px;}
+.pill-dot{
+  width:36px;height:36px;background:rgba(201,168,76,0.15);
+  border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px;
+  border:1px solid rgba(201,168,76,0.25);
+}
+.pill-title{font-weight:700;font-size:14px;color:white;margin-bottom:4px;}
+.pill-body{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7;}
+
+/* ─── STATS BAND ─── */
+.stats-band{
+  background:var(--gold);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-item{
+  padding:40px 32px;
+  border-right:1px solid rgba(11,31,58,0.15);
+  text-align:center;
+  transition:background 0.2s;
+}
+.stat-item:hover{background:var(--gold2);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;color:var(--navy);line-height:1;}
+.stat-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(11,31,58,0.6);margin-top:6px;font-weight:700;}
+
+/* ─── TEAM ─── */
+.team{background:var(--white);}
+.team-head{margin-bottom:56px;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+
+.team-card{
+  border-radius:10px;overflow:hidden;
+  border:1px solid var(--border);
+  transition:all 0.3s;
+}
+.team-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(11,31,58,0.1);border-color:transparent;}
+
+.tc-photo{
+  height:220px;position:relative;overflow:hidden;
+}
+.tc-photo img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease;}
+.team-card:hover .tc-photo img{transform:scale(1.06);}
+.tc-photo-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,31,58,0.7) 0%,transparent 50%);
+}
+.tc-badge{
+  position:absolute;bottom:14px;left:16px;
+  background:var(--gold);color:var(--navy);
+  font-size:9px;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;padding:5px 12px;border-radius:3px;
+}
+
+.tc-body{padding:26px 26px 30px;}
+.tc-name{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.tc-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;}
+.tc-bio{font-size:13px;color:var(--muted);line-height:1.75;}
+
+/* ─── TESTIMONIAL ─── */
+.testimonial{
+  background:var(--offwhite);
+  position:relative;overflow:hidden;
+}
+.testimonial::before{
+  content:'"';font-family:'Libre Baskerville',serif;
+  font-size:320px;color:rgba(11,31,58,0.04);
+  position:absolute;top:-60px;left:40px;
+  line-height:1;pointer-events:none;
+}
+.test-inner{
+  max-width:800px;margin:0 auto;text-align:center;
+  position:relative;z-index:1;
+}
+.test-stars{font-size:22px;letter-spacing:4px;color:var(--gold);margin-bottom:28px;}
+.test-quote{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(20px,2.5vw,30px);font-style:italic;
+  color:var(--navy);line-height:1.55;margin-bottom:32px;
+}
+.test-author{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.test-av{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--navy);display:flex;
+  align-items:center;justify-content:center;font-size:20px;
+}
+.test-name{font-weight:700;font-size:14px;color:var(--navy);}
+.test-title{font-size:12px;color:var(--muted);}
+
+/* ─── CONTACT ─── */
+.contact{
+  background:var(--white);
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.contact-left{
+  background:var(--navy);
+  padding:80px 64px;
+  position:relative;overflow:hidden;
+}
+.contact-left::after{
+  content:'';position:absolute;
+  bottom:-100px;right:-100px;width:320px;height:320px;
+  border-radius:50%;background:rgba(201,168,76,0.07);
+}
+.contact-left .s-title{color:white;}
+.contact-left .s-body{color:rgba(255,255,255,0.45);margin-bottom:48px;}
+
+.c-infos{display:flex;flex-direction:column;gap:24px;}
+.c-info{display:flex;gap:16px;align-items:flex-start;}
+.c-icon-box{
+  width:46px;height:46px;
+  background:rgba(201,168,76,0.12);
+  border:1px solid rgba(201,168,76,0.25);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.c-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:5px;font-weight:600;}
+.c-val{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.65;}
+
+.contact-right{background:var(--offwhite);padding:80px 64px;}
+.contact-right h3{font-family:'Libre Baskerville',serif;font-size:28px;color:var(--navy);margin-bottom:32px;}
+
+.fg{margin-bottom:18px;}
+.fl{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:8px;}
+.fi{
+  width:100%;border:1.5px solid var(--border);
+  background:var(--white);color:var(--text);
+  padding:13px 16px;border-radius:6px;
+  font-family:'Manrope',sans-serif;font-size:14px;
+  outline:none;transition:border-color 0.2s;
+}
+.fi:focus{border-color:var(--navy);}
+.fi::placeholder{color:#ccc;}
+textarea.fi{resize:vertical;min-height:90px;}
+.fs{
+  width:100%;background:var(--navy);color:white;
+  border:none;padding:16px;border-radius:6px;
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  font-weight:800;cursor:pointer;font-family:'Manrope',sans-serif;
+  margin-top:6px;transition:background 0.2s;
+}
+.fs:hover{background:var(--navy2);}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--navy);
+  border-top:1px solid rgba(201,168,76,0.2);
+  padding:28px 80px;
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:12px;
+}
+.f-brand{font-family:'Libre Baskerville',serif;font-size:14px;font-style:italic;color:var(--gold);}
+.f-copy{font-size:11px;color:rgba(255,255,255,0.25);}
+
+@media(max-width:960px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  section{padding:70px 24px;}
+  .hero-content{padding:0 24px;}
+  .hero-bar{display:none;}
+  .cards{grid-template-columns:1fr 1fr;}
+  .about{grid-template-columns:1fr;}
+  .about-img{display:none;}
+  .about-content{padding:60px 24px;}
+  .stats-band{grid-template-columns:1fr 1fr;}
+  .team-grid{grid-template-columns:1fr;}
+  .contact{grid-template-columns:1fr;}
+  .contact-left,.contact-right{padding:60px 24px;}
+  footer{padding:24px;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- WATERMARK -->
+<div id="wm" aria-hidden="true"></div>
+
+<!-- LOCK SCREEN -->
+<div id="lock">
+  <div class="lock-card">
+    <div class="lock-logo">⚖️</div>
+    <h2>This is a Demo Website</h2>
+    <p>A <strong>custom-built preview</strong> designed exclusively for B.N. Kiptoo & Co Advocates.<br/><br/>To <strong>unlock the full site, request edits, or get it live</strong> — contact the developer on WhatsApp right now.</p>
+    <a class="wa-btn" href="https://wa.me/254745882043?text=Hello%2C%20I%20saw%20the%20demo%20website%20built%20for%20B.N.%20Kiptoo%20%26%20Co%20Advocates%20and%20I%27m%20interested%20in%20getting%20it%20live." target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Unlock on WhatsApp
+    </a>
+    <div class="lock-or"><span></span><em>DEMO PREVIEW</em><span></span></div>
+    <p class="lock-hint">Click outside this box to scroll and browse the full demo.</p>
+  </div>
+</div>
+
+<div class="demo-badge">⚠ DEMO ONLY</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nl">
+    <div class="nl-main">B.N. KIPTOO & CO</div>
+    <div class="nl-sub">Advocates · Nairobi</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#practice">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('lock').style.display='flex'">Book Consultation</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span></span>Yala Towers · Biashara St · Nairobi CBD
+    </div>
+    <h1>Your Trusted <em>Legal Partner</em><br/>in Kenya</h1>
+    <p class="hero-sub">B.N. Kiptoo & Co Advocates delivers expert legal counsel across Commercial, Civil, Criminal, Family, Conveyancing and Succession Law — with professionalism and ethics at every step.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Book a Consultation</a>
+      <a href="#practice" class="btn-ghost">Our Practice Areas</a>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="hero-bar-item">
+      <div class="hbi-num">6</div>
+      <div class="hbi-lbl">Practice Areas</div>
+    </div>
+    <div class="hero-bar-item">
+      <div class="hbi-num">7th</div>
+      <div class="hbi-lbl">Floor, Yala Towers</div>
+    </div>
+    <div class="hero-bar-item">
+      <div class="hbi-num">✓</div>
+      <div class="hbi-lbl">Notaries Public</div>
+    </div>
+    <div class="hero-bar-item">
+      <div class="hbi-num">CBD</div>
+      <div class="hbi-lbl">Nairobi Based</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section class="practice" id="practice">
+  <div class="practice-head reveal">
+    <div>
+      <div class="s-tag">Practice Areas</div>
+      <h2 class="s-title">Expert Legal Services<br/>Across Six Disciplines</h2>
+    </div>
+    <p class="s-body">We deliver comprehensive legal representation handled by professional and ethical advocates committed to achieving the best outcome for every client.</p>
+  </div>
+  <div class="cards">
+    <div class="card reveal" style="transition-delay:0.05s">
+      <div class="card-ico">📊</div>
+      <div class="card-title">Commercial Law</div>
+      <div class="card-body">Contract drafting and review, debt recovery, commercial disputes and business transactions between companies and individuals across Kenya.</div>
+    </div>
+    <div class="card reveal" style="transition-delay:0.1s">
+      <div class="card-ico">⚖️</div>
+      <div class="card-title">Civil Litigation</div>
+      <div class="card-body">Civil claims, tort and negligence, landlord-tenant disputes and representation before Magistrates' and High Courts of Kenya.</div>
+    </div>
+    <div class="card reveal" style="transition-delay:0.15s">
+      <div class="card-ico">🏠</div>
+      <div class="card-title">Conveyancing</div>
+      <div class="card-body">Property transfers, sale agreements, title searches, lease preparation and all real estate transactions under Kenyan law.</div>
+    </div>
+    <div class="card reveal" style="transition-delay:0.2s">
+      <div class="card-ico">🔒</div>
+      <div class="card-title">Criminal Law</div>
+      <div class="card-body">Criminal defence, bail applications, appeals and expert advocacy at all court levels from subordinate courts to the Court of Appeal.</div>
+    </div>
+    <div class="card reveal" style="transition-delay:0.25s">
+      <div class="card-ico">👨‍👩‍👧</div>
+      <div class="card-title">Family Law</div>
+      <div class="card-body">Divorce, child custody and maintenance, matrimonial property and domestic disputes handled with care, speed and discretion.</div>
+    </div>
+    <div class="card reveal" style="transition-delay:0.3s">
+      <div class="card-ico">📜</div>
+      <div class="card-title">Succession Law</div>
+      <div class="card-body">Will drafting, probate and estate administration, inheritance disputes and Letters of Administration — guiding families through every step.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img reveal-left">
+    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80" alt="Law office professionals"/>
+    <div class="about-img-overlay"></div>
+  </div>
+  <div class="about-content reveal-right">
+    <div class="s-tag">Why Choose Us</div>
+    <h2 class="s-title" style="color:white">Professional.<br/>Ethical. Effective.</h2>
+    <p class="s-body">Located at Yala Towers in Nairobi's CBD, B.N. Kiptoo & Co Advocates has built a strong reputation for delivering results while maintaining the highest standards of professional ethics.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pill-dot">✅</div>
+        <div>
+          <div class="pill-title">Ethics at the Core</div>
+          <div class="pill-body">Every case is handled with absolute integrity. Client confidentiality and ethical practice are non-negotiable at our firm.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pill-dot">📋</div>
+        <div>
+          <div class="pill-title">Commissioners for Oaths & Notaries</div>
+          <div class="pill-body">Official oath-taking and notarisation services available — a complete one-stop legal office.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pill-dot">🏙️</div>
+        <div>
+          <div class="pill-title">Heart of Nairobi CBD</div>
+          <div class="pill-body">Yala Towers, 7th Floor, Biashara Street — accessible from anywhere in Nairobi. No long journeys to find quality legal help.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pill-dot">🤝</div>
+        <div>
+          <div class="pill-title">Client-First, Always</div>
+          <div class="pill-body">We bring surety to our clients through the best legal representation — your outcome is our top priority from day one.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stat-item reveal">
+    <div class="stat-num">6</div>
+    <div class="stat-lbl">Practice Areas</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:0.1s">
+    <div class="stat-num">CBD</div>
+    <div class="stat-lbl">Nairobi Located</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:0.2s">
+    <div class="stat-num">✓</div>
+    <div class="stat-lbl">Notaries Public</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:0.3s">
+    <div class="stat-num">100%</div>
+    <div class="stat-lbl">Client Focused</div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="team-head reveal">
+    <div class="s-tag">Our People</div>
+    <h2 class="s-title">The Advocates<br/>Fighting For You</h2>
+    <p class="s-body">Our team of experienced legal professionals brings specialist knowledge and unwavering dedication to every matter we handle.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal" style="transition-delay:0.05s">
+      <div class="tc-photo">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="Principal Advocate"/>
+        <div class="tc-photo-overlay"></div>
+        <div class="tc-badge">Principal Advocate</div>
+      </div>
+      <div class="tc-body">
+        <div class="tc-name">B.N. Kiptoo</div>
+        <div class="tc-role">Founder & Lead Advocate</div>
+        <div class="tc-bio">Founder and principal with deep expertise in Commercial, Civil and Criminal Law. A seasoned litigator and trusted legal advisor to businesses and individuals across Kenya.</div>
+      </div>
+    </div>
+    <div class="team-card reveal" style="transition-delay:0.12s">
+      <div class="tc-photo">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="Senior Associate"/>
+        <div class="tc-photo-overlay"></div>
+        <div class="tc-badge">Senior Associate</div>
+      </div>
+      <div class="tc-body">
+        <div class="tc-name">Senior Associate</div>
+        <div class="tc-role">Family & Succession Law</div>
+        <div class="tc-bio">Specialist in family law and estate administration, with a record of sensitive and effective representation in complex succession and matrimonial proceedings.</div>
+      </div>
+    </div>
+    <div class="team-card reveal" style="transition-delay:0.2s">
+      <div class="tc-photo">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" alt="Associate Advocate"/>
+        <div class="tc-photo-overlay"></div>
+        <div class="tc-badge">Associate</div>
+      </div>
+      <div class="tc-body">
+        <div class="tc-name">Associate Advocate</div>
+        <div class="tc-role">Conveyancing & Civil Law</div>
+        <div class="tc-bio">Handles all property conveyancing, civil litigation and serves as Commissioner for Oaths and Notary Public for official documentation and sworn affidavits.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="test-inner reveal">
+    <div class="test-stars">★★★★★</div>
+    <div class="test-quote">"B.N. Kiptoo & Co handled our company's legal matters with exceptional professionalism. They resolved a complex commercial dispute that others said was impossible. Highly recommended."</div>
+    <div class="test-author">
+      <div class="test-av">👔</div>
+      <div>
+        <div class="test-name">James Mwangi</div>
+        <div class="test-title">Business Owner, Nairobi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left reveal-left">
+    <div class="s-tag">Get In Touch</div>
+    <h2 class="s-title" style="color:white">Book Your<br/>Consultation</h2>
+    <p class="s-body">Reach out for a confidential consultation. Our advocates are ready to help you navigate any legal challenge.</p>
+    <div class="c-infos">
+      <div class="c-info">
+        <div class="c-icon-box">📍</div>
+        <div>
+          <div class="c-lbl">Office Address</div>
+          <div class="c-val">Yala Towers, 7th Floor<br/>Biashara Street, City Centre<br/>Nairobi, Kenya</div>
+        </div>
+      </div>
+      <div class="c-info">
+        <div class="c-icon-box">📞</div>
+        <div>
+          <div class="c-lbl">Phone Numbers</div>
+          <div class="c-val">+254 722 344181<br/>+254 20 2213187</div>
+        </div>
+      </div>
+      <div class="c-info">
+        <div class="c-icon-box">🕐</div>
+        <div>
+          <div class="c-lbl">Office Hours</div>
+          <div class="c-val">Monday – Friday: 8:00 AM – 5:30 PM<br/>Saturday: 9:00 AM – 1:00 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-right reveal-right">
+    <h3>Send an Enquiry</h3>
+    <div class="fg">
+      <label class="fl">Full Name</label>
+      <input class="fi" type="text" placeholder="Your full name"/>
+    </div>
+    <div class="fg">
+      <label class="fl">Phone Number</label>
+      <input class="fi" type="tel" placeholder="+254 7XX XXX XXX"/>
+    </div>
+    <div class="fg">
+      <label class="fl">Legal Matter</label>
+      <select class="fi" style="cursor:pointer">
+        <option value="" disabled selected>Select a practice area</option>
+        <option>Commercial Law</option>
+        <option>Civil Litigation</option>
+        <option>Conveyancing</option>
+        <option>Criminal Law</option>
+        <option>Family Law</option>
+        <option>Succession Law</option>
+        <option>Commissioner for Oaths / Notary</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label class="fl">Brief Description</label>
+      <textarea class="fi" placeholder="Describe your legal matter briefly..."></textarea>
+    </div>
+    <button class="fs">Send Enquiry →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">B.N. Kiptoo & Co Advocates — Bringing surety to our clients.</div>
+  <div class="f-copy">© 2025 B.N. Kiptoo & Co Advocates · Yala Towers, Nairobi</div>
+</footer>
+
+<script>
+// Watermark
+const wm=document.getElementById('wm');
+for(let r=0;r<18;r++)for(let c=0;c<7;c++){
+  const d=document.createElement('div');
+  d.className='wm-t';d.textContent='DEMO PREVIEW';
+  d.style.left=(c*320-100)+'px';d.style.top=(r*190-60)+'px';
+  wm.appendChild(d);
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+// Lock dismiss
+document.getElementById('lock').addEventListener('click',function(e){
+  if(e.target===this){
+    this.style.transition='opacity 0.35s';
+    this.style.opacity='0';this.style.pointerEvents='none';
+    setTimeout(()=>this.style.display='none',350);
+  }
+});
+</script>
+</body>
+</html>
